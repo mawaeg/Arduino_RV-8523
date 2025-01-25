@@ -1,0 +1,6 @@
+---
+BasedOnStyle: LLVM
+IndentWidth: 4
+AlignConsecutiveMacros: AcrossEmptyLines
+InsertNewlineAtEOF: true
+ReflowComments: false
