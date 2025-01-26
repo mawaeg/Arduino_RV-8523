@@ -1,6 +1,6 @@
 # RV-8523 RTC Arduino Library
 
-![Rv-8523-C3](https://www.mouser.de/images/microcrystal/images/RV-8523-C3_SPL.jpg)
+<img src="https://github.com/user-attachments/assets/af16cdb9-f160-4f6a-b53b-4630f65fcd49" width=150>
 
 This is a Arduino Library for interfacing with the RV-8523-C3 Real Time Clock.
 
