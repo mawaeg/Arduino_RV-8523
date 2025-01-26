@@ -143,6 +143,7 @@ enum time_order {
     TIME_YEAR,
 };
 
+// clang-format off
 /*! Defines the different power management types that can be configured */
 enum RV8523_BATTERY_SWITCHOVER {
     RV8523_BATTERY_SWITCHOVER_EN_STD__BAT_LOW_EN,   /*!< Battery switchover function is enabled in standard mode; Battery low detection function is enabled */
@@ -152,6 +153,7 @@ enum RV8523_BATTERY_SWITCHOVER {
     RV8523_BATTERY_SWITCHOVER_EN_DRCT__BAT_LOW_DIS, /*!< Battery switchover function is enabled in direct switching mode; Battery low detection function is disabled */
     RV8523_BATTERY_SWITCHOVER_DIS__BAT_LOW_DIS,     /*!< Battery switchover function is disabled - only one power supply (VDD); Battery low detection function is disabled*/
 };
+// clang-format on
 
 const std::array<uint8_t, 6> RV8523_BATTERY_SWITCHOVER_VALUES{
     0b0,
@@ -211,25 +213,27 @@ enum RV8523_CLKOUT_FREQUENCY {
     RV8523_CLKOUT_FREQUENCY_DISABLED /*!< clkout disabled */
 };
 
+// clang-format off
 /*! Defines the alarm modes that can be configured*/
 enum RV8523_ALARM_MODE {
-    RV8523_ALARM_MODE_DISABLED,     /*!< Disables the alarm */
-    RV8523_ALARM_MODE_MIN,          /*!< Enables minute alarm */
-    RV8523_ALARM_MODE_HOUR,         /*!< Enables hour alarm */
-    RV8523_ALARM_MODE_MIN_HOUR,     /*!< Enables minute and hour alarm */
-    RV8523_ALARM_MODE_DAY,          /*!< Enables day alarm */
-    RV8523_ALARM_MODE_MIN_DAY,      /*!< Enables minute and day alarm */
-    RV8523_ALARM_MODE_HOUR_DAY,     /*!< Enable hour and day alarm */
-    RV8523_ALARM_MODE_MIN_HOUR_DAY, /*!< Enable minute, hour and day alarm */
-    RV8523_ALARM_MODE_WDAY,         /*!< Enable weekday alarm */
-    RV8523_ALARM_MODE_MIN_WDAY,     /*!< Enable minute and weekday alarm */
-    RV8523_ALARM_MODE_HOUR_WDAY,    /*!< Enable hour and weekday alarm */
-    RV8523_ALARM_MODE_MIN_HOUR_WDAY, /*!< Enable minute, hour and weekday alarm */
-    RV8523_ALARM_MODE_DAY_WDAY,      /*!< Enable day and weekday alarm */
-    RV8523_ALARM_MODE_MIN_DAY_WDAY, /*!< Enable minute, day and weekday alarm */
-    RV8523_ALARM_MODE_HOUR_DAY_WDAY, /*!< Enable hour, day and weekday alarm */
+    RV8523_ALARM_MODE_DISABLED,         /*!< Disables the alarm */
+    RV8523_ALARM_MODE_MIN,              /*!< Enables minute alarm */
+    RV8523_ALARM_MODE_HOUR,             /*!< Enables hour alarm */
+    RV8523_ALARM_MODE_MIN_HOUR,         /*!< Enables minute and hour alarm */
+    RV8523_ALARM_MODE_DAY,              /*!< Enables day alarm */
+    RV8523_ALARM_MODE_MIN_DAY,          /*!< Enables minute and day alarm */
+    RV8523_ALARM_MODE_HOUR_DAY,         /*!< Enable hour and day alarm */
+    RV8523_ALARM_MODE_MIN_HOUR_DAY,     /*!< Enable minute, hour and day alarm */
+    RV8523_ALARM_MODE_WDAY,             /*!< Enable weekday alarm */
+    RV8523_ALARM_MODE_MIN_WDAY,         /*!< Enable minute and weekday alarm */
+    RV8523_ALARM_MODE_HOUR_WDAY,        /*!< Enable hour and weekday alarm */
+    RV8523_ALARM_MODE_MIN_HOUR_WDAY,    /*!< Enable minute, hour and weekday alarm */
+    RV8523_ALARM_MODE_DAY_WDAY,         /*!< Enable day and weekday alarm */
+    RV8523_ALARM_MODE_MIN_DAY_WDAY,     /*!< Enable minute, day and weekday alarm */
+    RV8523_ALARM_MODE_HOUR_DAY_WDAY,    /*!< Enable hour, day and weekday alarm */
     RV8523_ALARM_MODE_MIN_HOUR_DAY_WDAY /*!< Enable minute, hour, day and weekday alarm */
 };
+// clang-format on
 
 /* TBD:
     FREQUENCY OFFSET
