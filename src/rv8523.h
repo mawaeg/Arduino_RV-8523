@@ -252,486 +252,486 @@ class RV8523 {
     RV8523();
 
     /*!
-         * @brief Prepares the library and setup rtc
-         * @param twoWire Reference to the TwoWire instance that should be used
-         * @param is24Hours Whether the rtc should operate in 24hour or 12hour mode
-         * @return true if the operation was successful, false otherwise
-         */
+     * @brief Prepares the library and setup rtc
+     * @param twoWire Reference to the TwoWire instance that should be used
+     * @param is24Hours Whether the rtc should operate in 24hour or 12hour mode
+     * @return true if the operation was successful, false otherwise
+     */
     bool begin(TwoWire &twoWire = Wire, bool is24Hours = true);
     /*!
-         * @brief Sets the time of the rtc
-         * @param seconds The seconds that should be set (0-59)
-         * @param minutes The minutes that should be set (0-59)
-         * @param hours The hours that should be set (1-12 / 0-23)
-         * @param day The day that should be set (1-31)
-         * @param weekday The weekday that should be set (0-6) (0=Sunday)
-         * @param month the month that should be set (1-12)
-         * @param year The year that should be set (0-99)
-         * @return true if the operation was successful, false otherwise
-         */
+     * @brief Sets the time of the rtc
+     * @param seconds The seconds that should be set (0-59)
+     * @param minutes The minutes that should be set (0-59)
+     * @param hours The hours that should be set (1-12 / 0-23)
+     * @param day The day that should be set (1-31)
+     * @param weekday The weekday that should be set (0-6) (0=Sunday)
+     * @param month the month that should be set (1-12)
+     * @param year The year that should be set (0-99)
+     * @return true if the operation was successful, false otherwise
+     */
     bool setTime(uint8_t seconds, uint8_t minutes, uint8_t hours, uint8_t day,
                  uint8_t weekday, uint8_t month, uint8_t year);
     /*!
-         * @brief Sets the time of the rtc (!NOTE! values have to be in bcd format)
-         * @param time pointer to an array of uint8_t to set the time to (seconds, minutes, hours, day , weekday, month, year) (in bcd)
-         * @return true if the operation was successful, false otherwise
-         */
+     * @brief Sets the time of the rtc (!NOTE! values have to be in bcd format)
+     * @param time pointer to an array of uint8_t to set the time to (seconds, minutes, hours, day , weekday, month, year) (in bcd)
+     * @return true if the operation was successful, false otherwise
+     */
     bool setTime(uint8_t *time, uint8_t len);
     /*!
-         * @brief Sets the seconds of the rtc
-         * @param seconds The seconds that should be set (0-59)
-         * @return true if the operation was successful, false otherwise
-         */
+     * @brief Sets the seconds of the rtc
+     * @param seconds The seconds that should be set (0-59)
+     * @return true if the operation was successful, false otherwise
+     */
     bool setSeconds(uint8_t seconds);
     /*!
-         * @brief Sets the minutes of the rtc
-         * @param minutes The minutes that should be set (0-59)
-         * @return true if the operation was successful, false otherwise
-         */
+     * @brief Sets the minutes of the rtc
+     * @param minutes The minutes that should be set (0-59)
+     * @return true if the operation was successful, false otherwise
+     */
     bool setMinutes(uint8_t minutes);
     /*!
-         * @brief Sets the hours of the rtc
-         * @param hours The hours that should be set (1-12 / 0-23)
-         * @return true if the operation was successful, false otherwise
-         */
+     * @brief Sets the hours of the rtc
+     * @param hours The hours that should be set (1-12 / 0-23)
+     * @return true if the operation was successful, false otherwise
+     */
     bool setHours(uint8_t hours);
     /*!
-         * @brief Sets the day of the rtc
-         * @param day The day that should be set (1-31)
-         * @return true if the operation was successful, false otherwise
-         */
+     * @brief Sets the day of the rtc
+     * @param day The day that should be set (1-31)
+     * @return true if the operation was successful, false otherwise
+     */
     bool setDay(uint8_t day);
     /*!
-         * @brief Sets the weekday of the rtc
-         * @param weekday The weekday that should be set (0-6) (0=Sunday)
-         * @return true if the operation was successful, false otherwise
-         */
+     * @brief Sets the weekday of the rtc
+     * @param weekday The weekday that should be set (0-6) (0=Sunday)
+     * @return true if the operation was successful, false otherwise
+     */
     bool setWeekday(uint8_t weekday);
     /*!
-         * @brief Sets the month of the rtc
-         * @param month The month that should be set (1-12)
-         * @return true if the operation was successful, false otherwise
-         */
+     * @brief Sets the month of the rtc
+     * @param month The month that should be set (1-12)
+     * @return true if the operation was successful, false otherwise
+     */
     bool setMonth(uint8_t month);
     /*!
-         * @brief Sets the year of the rtc
-         * @param year The year that should be set (0-99)
-         * @return true if the operation was successful, false otherwise
-         */
+     * @brief Sets the year of the rtc
+     * @param year The year that should be set (0-99)
+     * @return true if the operation was successful, false otherwise
+     */
     bool setYear(uint8_t year);
 
     /*!
-         * @brief Updates the local array. Needed before getting the time (string, or single number)
-         * @return true if the operation was successful, false otherwise
-         */
+     * @brief Updates the local array. Needed before getting the time (string, or single number)
+     * @return true if the operation was successful, false otherwise
+     */
     bool updateTime();
 
     /*!
-         * @brief Returns the current time in mm-dd-yyyy
-         * @return The current time as formatted string
-         */
+     * @brief Returns the current time in mm-dd-yyyy
+     * @return The current time as formatted string
+     */
     char *stringDateUSA();
     /*!
-         * @brief Returns the current time in dd-mm-yyyy
-         * @return The current time as formatted string
-         */
+     * @brief Returns the current time in dd-mm-yyyy
+     * @return The current time as formatted string
+     */
     char *stringDate();
     /*!
-         * @brief Returns the current time in hh:mm:ss with AM/PM if in 12 hour mode
-         * @return The current time as formatted string
-         */
+     * @brief Returns the current time in hh:mm:ss with AM/PM if in 12 hour mode
+     * @return The current time as formatted string
+     */
     char *stringTime();
     /*!
-         * @brief Returns the current timestamp in ISO 8601 (yyyy-mm-ddThh:mm:ss)
-         * @return The current time as formatted string
-         */
+     * @brief Returns the current timestamp in ISO 8601 (yyyy-mm-ddThh:mm:ss)
+     * @return The current time as formatted string
+     */
     char *stringTimeStamp();
 
     /*!
-         * @brief Returns the current seconds
-         * @return The seconds as uint8_8
-         */
+     * @brief Returns the current seconds
+     * @return The seconds as uint8_8
+     */
     uint8_t getSeconds();
     /*!
-         * @brief Returns the current minutes
-         * @return The minutes as uint8_8
-         */
+     * @brief Returns the current minutes
+     * @return The minutes as uint8_8
+     */
     uint8_t getMinutes();
     /*!
-         * @brief Returns the current hours
-         * @return The hours as uint8_8
-         */
+     * @brief Returns the current hours
+     * @return The hours as uint8_8
+     */
     uint8_t getHours();
     /*!
-         * @brief Returns the current day
-         * @return The day as uint8_8
-         */
+     * @brief Returns the current day
+     * @return The day as uint8_8
+     */
     uint8_t getDay();
     /*!
-         * @brief Returns the current weekday
-         * @return The weekday as uint8_8
-         */
+     * @brief Returns the current weekday
+     * @return The weekday as uint8_8
+     */
     uint8_t getWeekday();
     /*!
-         * @brief Returns the current month
-         * @return The month as uint8_8
-         */
+     * @brief Returns the current month
+     * @return The month as uint8_8
+     */
     uint8_t getMonth();
     /*!
-         * @brief Returns the current year
-         * @return The year as uint8_8
-         */
+     * @brief Returns the current year
+     * @return The year as uint8_8
+     */
     uint8_t getYear();
 
     /*!
-         * @brief Checks if 12 hours mode is currently enabled
-         * @return true if rtc is configured in 12 hours mode, false otherwise
-         */
+     * @brief Checks if 12 hours mode is currently enabled
+     * @return true if rtc is configured in 12 hours mode, false otherwise
+     */
     bool is12Hours();
     /*!
-         * @brief Checks if it is currently pm
-         * @return true if pm, false otherwise and if 24 hours mode configured
-         */
+     * @brief Checks if it is currently pm
+     * @return true if pm, false otherwise and if 24 hours mode configured
+     */
     bool isPM();
     /*!
-         * @brief Sets the rtc to 12 hours mode
-         * @return true if the operation was successful, false otherwise
-         */
+     * @brief Sets the rtc to 12 hours mode
+     * @return true if the operation was successful, false otherwise
+     */
     bool set12Hours();
     /*!
-         * @brief Sets the rtc to 24 hours mode
-         * @return true if the operation was successful, false otherwise
-         */
+     * @brief Sets the rtc to 24 hours mode
+     * @return true if the operation was successful, false otherwise
+     */
     bool set24Hours();
 
     /*!
-         * @brief Configures the alarm of the rtc and enables the interrupt
-         * @param minute The minute the alarm should be triggered
-         * @param hour The hour the alarm should be triggered
-         * @param day The day the alarm should be triggered
-         * @param weekday The weekday the alarm should be triggered
-         * @param mode The mode the alarm should be configured to
-         * @return true if the operation was successful, false otherwise
-         */
+     * @brief Configures the alarm of the rtc and enables the interrupt
+     * @param minute The minute the alarm should be triggered
+     * @param hour The hour the alarm should be triggered
+     * @param day The day the alarm should be triggered
+     * @param weekday The weekday the alarm should be triggered
+     * @param mode The mode the alarm should be configured to
+     * @return true if the operation was successful, false otherwise
+     */
     bool setAlarm(uint8_t minute, uint8_t hour, uint8_t day, uint8_t weekday,
                   RV8523_ALARM_MODE mode);
     /*!
-         * @brief Enables the interrupt for the alarm
-         * @return true if the operation was successful, false otherwise
-         */
+     * @brief Enables the interrupt for the alarm
+     * @return true if the operation was successful, false otherwise
+     */
     bool enableAlarmInterrupt();
     /*!
-         * @brief Disables the interrupt for the alarm
-         * @return true if the operation was successful, false otherwise
-         */
+     * @brief Disables the interrupt for the alarm
+     * @return true if the operation was successful, false otherwise
+     */
     bool disableAlarmInterrupt();
     /*!
-         * @brief Reads the interrupt flag for the alarm
-         * @return true if the alarm interrupt flag is set, false otherwise
-         */
+     * @brief Reads the interrupt flag for the alarm
+     * @return true if the alarm interrupt flag is set, false otherwise
+     */
     bool readAlarmInterruptFlag();
     /*!
-         * @brief Clears the interrupt flag for the alarm
-         * @return true if the operation was successful, false otherwise
-         */
+     * @brief Clears the interrupt flag for the alarm
+     * @return true if the operation was successful, false otherwise
+     */
     bool clearAlarmInterruptFlag();
 
     /*!
-         * @brief Configures the Timer A of the rtc
-         * @param timer_irq_mode The interrupt mode the timer should be set to
-         * @param source_freq The source frequency the timer should use
-         * @param value The value the timer should be set to
-         * @param set_interrupt Whether the interrupt of the timer should be enabled
-         * @param mode The mode the timer should be set to
-         * @return true if the operation was successful, false otherwise
-        */
+     * @brief Configures the Timer A of the rtc
+     * @param timer_irq_mode The interrupt mode the timer should be set to
+     * @param source_freq The source frequency the timer should use
+     * @param value The value the timer should be set to
+     * @param set_interrupt Whether the interrupt of the timer should be enabled
+     * @param mode The mode the timer should be set to
+     * @return true if the operation was successful, false otherwise
+     */
     bool setTimerA(RV8523_TIMER_IRQ_MODE timer_irq_mode,
                    RV8523_SOURCE_CLOCK_FREQUENCY source_freq, uint8_t value,
                    bool set_interrupt, RV8523_TIMER_A_MODE mode);
     /*!
-         * @brief Configure the interrupt mode of Timer A
-         * @param timer_irq_mode The interrupt mode the timer should be set to
-         * @return true if the operation was successful, false otherwise
-         */
+     * @brief Configure the interrupt mode of Timer A
+     * @param timer_irq_mode The interrupt mode the timer should be set to
+     * @return true if the operation was successful, false otherwise
+     */
     bool setTimerAIRQMode(RV8523_TIMER_IRQ_MODE timer_irq_mode);
     /*!
-         * @brief Configure the operation mode of Timer A
-         * @param mode The mode the timer should be set to
-         * @return true if the operation was successful, false otherwise
-         */
+     * @brief Configure the operation mode of Timer A
+     * @param mode The mode the timer should be set to
+     * @return true if the operation was successful, false otherwise
+     */
     bool setTimerAMode(RV8523_TIMER_A_MODE mode);
     /*!
-         * @brief Disable the interrupt for Timer A
-         * @return true if the operation was successful, false otherwise
-         */
+     * @brief Disable the interrupt for Timer A
+     * @return true if the operation was successful, false otherwise
+     */
     bool disableTimerAInterrupts();
     /*!
-         * @brief Enable the watchdog interrupt for Timer A
-         * @return true if the operation was successful, false otherwise
-         */
+     * @brief Enable the watchdog interrupt for Timer A
+     * @return true if the operation was successful, false otherwise
+     */
     bool enableTimerAWDInterrupt();
     /*!
-         * @brief Disable the watchdog interrupt for Timer A
-         * @return true if the operation was successful, false otherwise
-         */
+     * @brief Disable the watchdog interrupt for Timer A
+     * @return true if the operation was successful, false otherwise
+     */
     bool disableTimerAWDInterrupt();
     /*!
-         * @brief Enable the countdown interrupt for Timer A
-         * @return true if the operation was successful, false otherwise
-         */
+     * @brief Enable the countdown interrupt for Timer A
+     * @return true if the operation was successful, false otherwise
+     */
     bool enableTimerACDInterrupt();
     /*!
-         * @brief Disable the countdown interrupt for Timer A
-         * @return true if the operation was successful, false otherwise
-         */
+     * @brief Disable the countdown interrupt for Timer A
+     * @return true if the operation was successful, false otherwise
+     */
     bool disableTimerACDInterrupt();
     /*!
-         * @brief Reads the watchdog interrupt flag for Timer A
-         * @return true if the Timer A watchdog interrupt flag is set, false otherwise
-         */
+     * @brief Reads the watchdog interrupt flag for Timer A
+     * @return true if the Timer A watchdog interrupt flag is set, false otherwise
+     */
     bool readTimerAWDInterruptFlag();
     /*!
-         * @brief Reads the countdown interrupt flag for Timer A
-         * @return true if the Timer A countdown interrupt flag is set, false otherwise
-         */
+     * @brief Reads the countdown interrupt flag for Timer A
+     * @return true if the Timer A countdown interrupt flag is set, false otherwise
+     */
     bool readTimerACDInterruptFlag();
     /*!
-         * @brief Clears the interrupt flags for Timer A
-         * @return true if the operation was successful, false otherwise
-         */
+     * @brief Clears the interrupt flags for Timer A
+     * @return true if the operation was successful, false otherwise
+     */
     bool clearTimerAInterruptFlag();
 
     /*!
-         * @brief Configures the Timer B of the rtc
-         * @param timer_irq_mode The interrupt mode the timer should be set to
-         * @param source_freq The source frequency the timer should use
-         * @param pulse_width The pulse width that should be configured
-         * @param value The value the timer should be set to
-         * @param set_interrupt Whether the interrupt of the timer should be enabled
-         * @param start_timer Whether the timer should be started (enabled)
-         * @return true if the operation was successful, false otherwise
-        */
+     * @brief Configures the Timer B of the rtc
+     * @param timer_irq_mode The interrupt mode the timer should be set to
+     * @param source_freq The source frequency the timer should use
+     * @param pulse_width The pulse width that should be configured
+     * @param value The value the timer should be set to
+     * @param set_interrupt Whether the interrupt of the timer should be enabled
+     * @param start_timer Whether the timer should be started (enabled)
+     * @return true if the operation was successful, false otherwise
+     */
     bool setTimerB(RV8523_TIMER_IRQ_MODE timer_irq_mode,
                    RV8523_SOURCE_CLOCK_FREQUENCY source_freq,
                    RV8523_TIMER_PULS_WIDTH pulse_width, uint8_t value,
                    bool set_interrupt, bool start_timer);
     /*!
-         * @brief Configure the interrupt mode of Timer B
-         * @param timer_irq_mode The interrupt mode the timer should be set to
-         * @return true if the operation was successful, false otherwise
-         */
+     * @brief Configure the interrupt mode of Timer B
+     * @param timer_irq_mode The interrupt mode the timer should be set to
+     * @return true if the operation was successful, false otherwise
+     */
     bool setTimerBIRQMode(RV8523_TIMER_IRQ_MODE timer_irq_mode);
     /*!
-         * @brief Enables Timer B
-         * @returns true if the operation was successful, false otherwise
-         */
+     * @brief Enables Timer B
+     * @returns true if the operation was successful, false otherwise
+     */
     bool enableTimerB();
     /*!
-         * @brief Disables Timer B
-         * @returns true if the operation was successful, false otherwise
-         */
+     * @brief Disables Timer B
+     * @returns true if the operation was successful, false otherwise
+     */
     bool disableTimerB();
     /*!
-         * @brief Enable the interrupt for Timer B
-         * @return true if the operation was successful, false otherwise
-         */
+     * @brief Enable the interrupt for Timer B
+     * @return true if the operation was successful, false otherwise
+     */
     bool enableTimerBInterrupt();
     /*!
-         * @brief Disable the interrupt for Timer B
-         * @return true if the operation was successful, false otherwise
-         */
+     * @brief Disable the interrupt for Timer B
+     * @return true if the operation was successful, false otherwise
+     */
     bool disableTimerBInterrupt();
     /*!
-         * @brief Reads the interrupt flag for Timer B
-         * @return true if the Timer B interrupt flag is set, false otherwise
-         */
+     * @brief Reads the interrupt flag for Timer B
+     * @return true if the Timer B interrupt flag is set, false otherwise
+     */
     bool readTimerBInterruptFlag();
     /*!
-         * @brief Clears the interrupt flag for Timer B
-         * @return true if the operation was successful, false otherwise
-         */
+     * @brief Clears the interrupt flag for Timer B
+     * @return true if the operation was successful, false otherwise
+     */
     bool clearTimerBInterruptFlag();
 
     /*!
-         * @brief Enables the second timer interrupt
-         * @return true if the operation was successful, false otherwise
-         */
+     * @brief Enables the second timer interrupt
+     * @return true if the operation was successful, false otherwise
+     */
     bool enableSecondTimerInterrupt();
     /*!
-         * @brief Disables the second timer interrupt
-         * @return true if the operation was successful, false otherwise
-         */
+     * @brief Disables the second timer interrupt
+     * @return true if the operation was successful, false otherwise
+     */
     bool disableSecondTimerInterrupt();
     /*!
-         * @brief Reads the second timer interrupt flag
-         * @return true if the second timer interrupt flag is set, false otherwise
-         */
+     * @brief Reads the second timer interrupt flag
+     * @return true if the second timer interrupt flag is set, false otherwise
+     */
     bool readSecondTimerInterruptFlag();
     /*!
-         * @brief Clears the second timer interrupt flag
-         * @return true if the operation was successful, false otherwise
-         */
+     * @brief Clears the second timer interrupt flag
+     * @return true if the operation was successful, false otherwise
+     */
     bool clearSecondTimerInterruptFlag();
 
     /*!
-         * @brief Get the current CLKOUT frequency
-         * @return The currently configured CLKOUT frequency
-         */
+     * @brief Get the current CLKOUT frequency
+     * @return The currently configured CLKOUT frequency
+     */
     RV8523_CLKOUT_FREQUENCY getCLKOUTFrequency();
     /*!
-         * @brief Sets the CLKOUT frequency
-         * @param frequency The frequency that should be set
-         * @return true if the operation was successful, false otherwise
-         */
+     * @brief Sets the CLKOUT frequency
+     * @param frequency The frequency that should be set
+     * @return true if the operation was successful, false otherwise
+     */
     bool setCLKOUTFrequency(RV8523_CLKOUT_FREQUENCY frequency);
 
     /*!
-         * @brief Get the current battery switchover configuration
-         * @return The currently configured battery switchover
-         */
+     * @brief Get the current battery switchover configuration
+     * @return The currently configured battery switchover
+     */
     RV8523_BATTERY_SWITCHOVER getBatterySwitchover();
     /*!
-         * @brief Sets the battery switchover configuration
-         * @param frequency The battery switchover type that should be set
-         * @return true if the operation was successful, false otherwise
-         */
+     * @brief Sets the battery switchover configuration
+     * @param frequency The battery switchover type that should be set
+     * @return true if the operation was successful, false otherwise
+     */
     bool setBatterySwitchover(RV8523_BATTERY_SWITCHOVER type);
 
     /*!
-         * @brief Reads the battery switchover interrupt flag
-         * @return true if the battery switchover interrupt flag is set, false otherwise
-         */
+     * @brief Reads the battery switchover interrupt flag
+     * @return true if the battery switchover interrupt flag is set, false otherwise
+     */
     bool readBatterySwitchoverFlag();
     /*!
-         * @brief Clears the battery switchover interrupt flag
-         * @return true if the operation was successful, false otherwise
-         */
+     * @brief Clears the battery switchover interrupt flag
+     * @return true if the operation was successful, false otherwise
+     */
     bool clearBatterySwitchoverFlag();
     /*!
-         * @brief Enables the battery switchover interrupt
-         * @return true if the operation was successful, false otherwise
-         */
+     * @brief Enables the battery switchover interrupt
+     * @return true if the operation was successful, false otherwise
+     */
     bool enableBatterySwitchoverInterrupt();
     /*!
-         * @brief Disables the battery switchover interrupt
-         * @return true if the operation was successful, false otherwise
-         */
+     * @brief Disables the battery switchover interrupt
+     * @return true if the operation was successful, false otherwise
+     */
     bool disableBatterySwitchoverInterrupt();
     /*!
-         * @brief Reads the battery low interrupt flag
-         * @return true if the battery low interrupt flag is set, false otherwise
-         */
+     * @brief Reads the battery low interrupt flag
+     * @return true if the battery low interrupt flag is set, false otherwise
+     */
     bool readBatteryLowFlag();
     /*!
-         * @brief Enables the battery low interrupt
-         * @return true if the operation was successful, false otherwise
-         */
+     * @brief Enables the battery low interrupt
+     * @return true if the operation was successful, false otherwise
+     */
     bool enableBatteryLowInterrupt();
     /*!
-         * @brief Disables the battery low interrupt
-         * @return true if the operation was successful, false otherwise
-         */
+     * @brief Disables the battery low interrupt
+     * @return true if the operation was successful, false otherwise
+     */
     bool disableBatteryLowInterrupt();
 
     /*!
-         * @brief Sets the mode for the frequency offset
-         * @param mode The mode that should be set where 
-         * @return true if the operation was successful, false otherwise
-         */
+     * @brief Sets the mode for the frequency offset
+     * @param mode The mode that should be set where 
+     * @return true if the operation was successful, false otherwise
+     */
     bool setFrequencyOffsetMode(RV8523_FREQUENCY_OFFSET_MODE_TYPE mode);
 
     /*!
-         * @brief Gets the currently configured frequency offset mode
-         * @return The currently configured frequency offset mode
-         */
+     * @brief Gets the currently configured frequency offset mode
+     * @return The currently configured frequency offset mode
+     */
     RV8523_FREQUENCY_OFFSET_MODE_TYPE getFrequencyOffsetMode();
 
     /*!
-         * @brief Sets the frequency offset
-         * @param offset The offset that should be configured (-64 to +63)
-         * @return true if the operation was successful, false otherwise
-         */
+     * @brief Sets the frequency offset
+     * @param offset The offset that should be configured (-64 to +63)
+     * @return true if the operation was successful, false otherwise
+     */
     bool setFrequencyOffset(int8_t offset);
 
     /*!
-         * @brief Gets the currently configured frequency offset
-         * @return The currently configured frequency offset
-         */
+     * @brief Gets the currently configured frequency offset
+     * @return The currently configured frequency offset
+     */
     int8_t getFrequencyOffset();
 
     /*!
-         * @brief Resets the rtc
-         * @return true if the operation was successful, false otherwise
-         */
+     * @brief Resets the rtc
+     * @return true if the operation was successful, false otherwise
+     */
     bool reset();
 
   private:
     /*!
-         * @brief Reads a i2c address
-         * @param addr The address it should be read from
-         * @return The value of the registers as uint8_t
-         */
+     * @brief Reads a i2c address
+     * @param addr The address it should be read from
+     * @return The value of the registers as uint8_t
+     */
     uint8_t readRegister(uint8_t addr);
     /*!
-         * @brief Writes to a i2c address
-         * @param addr The address it should be written to
-         * @return true if the operation was successful, false otherwise
-         */
+     * @brief Writes to a i2c address
+     * @param addr The address it should be written to
+     * @return true if the operation was successful, false otherwise
+     */
     bool writeRegister(uint8_t addr, uint8_t val);
     /*!
-         * @brief Reads from multiple i2c addresses
-         * @param addr The start address it should be read from
-         * @param dest The destination array, where the register values should be written to
-         * @param len The amount of registers that should be read
-         * @return true if the operation was successful, false otherwise
-         */
+     * @brief Reads from multiple i2c addresses
+     * @param addr The start address it should be read from
+     * @param dest The destination array, where the register values should be written to
+     * @param len The amount of registers that should be read
+     * @return true if the operation was successful, false otherwise
+     */
     bool readMultipleRegisters(uint8_t addr, uint8_t *dest, uint8_t len);
     /*!
-         * @brief Writes to multiple i2c addresses
-         * @param addr The start address it should be written to
-         * @param val The source array, that should be written to the registers
-         * @param len The amount of registers that should be written
-         * @return true if the operation was successful, false otherwise
-         */
+     * @brief Writes to multiple i2c addresses
+     * @param addr The start address it should be written to
+     * @param val The source array, that should be written to the registers
+     * @param len The amount of registers that should be written
+     * @return true if the operation was successful, false otherwise
+     */
     bool writeMultipleRegisters(uint8_t addr, uint8_t *val, uint8_t len);
 
     /*!
-         * @brief Applies a mask to a given i2c address
-         * @param addr The addr the mask should be applied to
-         * @param mask The mask that should be applied
-         */
+     * @brief Applies a mask to a given i2c address
+     * @param addr The addr the mask should be applied to
+     * @param mask The mask that should be applied
+     */
     bool setMask(uint8_t addr, uint8_t mask);
     /*!
-         * @brief Clears a mask on a given i2c address
-         * @param addr The addr the mask should be cleared from
-         * @param mask The mask that should be cleared
-         */
+     * @brief Clears a mask on a given i2c address
+     * @param addr The addr the mask should be cleared from
+     * @param mask The mask that should be cleared
+     */
     bool clearMask(uint8_t addr, uint8_t mask);
     /*!
-         * @brief Reads a mask from a given i2c address
-         * @param addr The addr the mask should be read to
-         * @param mask The mask that should be read
-         */
+     * @brief Reads a mask from a given i2c address
+     * @param addr The addr the mask should be read to
+     * @param mask The mask that should be read
+     */
     int readMask(uint8_t addr, uint8_t mask);
 
     /*!
-         * @brief Converts a bcd value to dec
-         * @param bcd The bcd value that should be converted
-         * @return the converted value as dec
-         */
+     * @brief Converts a bcd value to dec
+     * @param bcd The bcd value that should be converted
+     * @return the converted value as dec
+     */
     uint8_t bcdToDec(uint8_t bcd);
     /*!
-         * @brief Converts a dec value to bcd
-         * @param dec The dec value that should be converted
-         * @return the converted value as bcd
-         */
+     * @brief Converts a dec value to bcd
+     * @param dec The dec value that should be converted
+     * @return the converted value as bcd
+     */
     uint8_t decToBcd(uint8_t dec);
 
     /*!
-         * @brief Converts a binary value to a signed 8bit value where the 7th bit is the sign
-         * @param bin The binary value that should be converted
-         * @return The converted value
-         */
+     * @brief Converts a binary value to a signed 8bit value where the 7th bit is the sign
+     * @param bin The binary value that should be converted
+     * @return The converted value
+     */
     int8_t sevenBitSignedToDec(int8_t bin);
 
     TwoWire *_twoWire;
