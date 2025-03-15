@@ -517,6 +517,41 @@ bool RV8523::disableBatteryLowInterrupt() {
     return clearMask(RV8523_CONTROL3, RV8523_CONTROL3_BLIE);
 }
 
+bool RV8523::setFrequencyOffsetMode(RV8523_FREQUENCY_OFFSET_MODE_TYPE mode) {
+    if (mode == RV8523_FREQUENCY_OFFSET_MODE_TYPE_2HOURS) {
+        return clearMask(RV8523_FREQUENCY_OFFSET, RV8523_FREQUENCY_OFFSET_MODE);
+    }
+    if (mode == RV8523_FREQUENCY_OFFSET_MODE_TYPE_1MIN) {
+        return setMask(RV8523_FREQUENCY_OFFSET, RV8523_FREQUENCY_OFFSET_MODE);
+    }
+    return false;
+}
+
+RV8523_FREQUENCY_OFFSET_MODE_TYPE RV8523::getFrequencyOffsetMode() {
+    return (
+        RV8523_FREQUENCY_OFFSET_MODE_TYPE)(readMask(
+                                               RV8523_FREQUENCY_OFFSET,
+                                               RV8523_FREQUENCY_OFFSET_MODE) >>
+                                           7);
+}
+
+bool RV8523::setFrequencyOffset(int8_t offset) {
+    if (offset < -64 || offset > 63) {
+        return false;
+    }
+    bool retVal =
+        clearMask(RV8523_FREQUENCY_OFFSET, RV8523_FREQUENCY_OFFSET_OFFSET);
+    if (retVal) {
+        retVal = setMask(RV8523_FREQUENCY_OFFSET, offset);
+    }
+    return retVal;
+}
+
+int8_t RV8523::getFrequencyOffset() {
+    return sevenBitSignedToDec(
+        readMask(RV8523_FREQUENCY_OFFSET, RV8523_FREQUENCY_OFFSET_OFFSET));
+}
+
 bool RV8523::reset() {
     return writeRegister(RV8523_CONTROL1, RV8523_CONTROL1_RESET);
 }
@@ -593,3 +628,11 @@ uint8_t RV8523::bcdToDec(uint8_t bcd) {
 }
 
 uint8_t RV8523::decToBcd(uint8_t dec) { return ((dec / 10) << 4) | (dec % 10); }
+
+int8_t RV8523::sevenBitSignedToDec(int8_t bin) {
+    bin &= 0b1111111;
+    if (bin & 0b1000000) {
+        bin -= 128;
+    }
+    return bin;
+}

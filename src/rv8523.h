@@ -235,8 +235,12 @@ enum RV8523_ALARM_MODE {
 };
 // clang-format on
 
+enum RV8523_FREQUENCY_OFFSET_MODE_TYPE {
+    RV8523_FREQUENCY_OFFSET_MODE_TYPE_2HOURS,
+    RV8523_FREQUENCY_OFFSET_MODE_TYPE_1MIN
+};
+
 /* TBD:
-    FREQUENCY OFFSET
     ALARM 12 hours mode
 */
 
@@ -630,6 +634,32 @@ class RV8523 {
     bool disableBatteryLowInterrupt();
 
     /*!
+         * @brief Sets the mode for the frequency offset
+         * @param mode The mode that should be set where 
+         * @return true if the operation was successful, false otherwise
+         */
+    bool setFrequencyOffsetMode(RV8523_FREQUENCY_OFFSET_MODE_TYPE mode);
+
+    /*!
+         * @brief Gets the currently configured frequency offset mode
+         * @return The currently configured frequency offset mode
+         */
+    RV8523_FREQUENCY_OFFSET_MODE_TYPE getFrequencyOffsetMode();
+
+    /*!
+         * @brief Sets the frequency offset
+         * @param offset The offset that should be configured (-64 to +63)
+         * @return true if the operation was successful, false otherwise
+         */
+    bool setFrequencyOffset(int8_t offset);
+
+    /*!
+         * @brief Gets the currently configured frequency offset
+         * @return The currently configured frequency offset
+         */
+    int8_t getFrequencyOffset();
+
+    /*!
          * @brief Resets the rtc
          * @return true if the operation was successful, false otherwise
          */
@@ -696,6 +726,13 @@ class RV8523 {
          * @return the converted value as bcd
          */
     uint8_t decToBcd(uint8_t dec);
+
+    /*!
+         * @brief Converts a binary value to a signed 8bit value where the 7th bit is the sign
+         * @param bin The binary value that should be converted
+         * @return The converted value
+         */
+    int8_t sevenBitSignedToDec(int8_t bin);
 
     TwoWire *_twoWire;
     uint8_t _time[TIME_ARRAY_LENGTH];
